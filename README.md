@@ -120,6 +120,7 @@ Our mission is to make travel **personalized**, **safe**, and **immersive** for 
 ### Installation
 
 1. **Clone the repository**
+
  
    git clone https://github.com/yourusername/tourease.git
    cd tourease
@@ -127,6 +128,15 @@ Our mission is to make travel **personalized**, **safe**, and **immersive** for 
 
 2. **Install dependencies**
  
+=======
+  
+   git clone https://github.com/yourusername/tourease.git
+   cd tourease
+  
+
+2. **Install dependencies**
+  
+
    # Install backend dependencies
    cd backend
    npm install
@@ -207,9 +217,6 @@ Check out our [Issues](https://github.com/yourusername/tourease/issues) page to 
 ---
 
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
@@ -221,8 +228,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
+
 ## Setup
 Please follow [SETUP.md](SETUP.md) to set up the project locally.
+
+=======
+
+[![License: MIT](https://img.shields.io/github/license/Suhani1234-5/TourEase)](https://opensource.org/licenses/MIT)
 
 
 ## Code of Conduct
