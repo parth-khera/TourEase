@@ -20,6 +20,7 @@ import Login from "./pages/Login";
 import AddFavorite from "./pages/AddFavorite";
 import ScrollToTopButton from "./components/common/ScrollToTop";
 import DestinationDetails from "./pages/DestinationDetails";
+import OAuthSuccess from "./pages/OAuthSuccess";
 
 function ProtectedRoute({ children }) {
   const isAuthenticated = Boolean(localStorage.getItem("token"));
@@ -59,6 +60,7 @@ function AppRoutes() {
           <Route path="/login" element={<Login />} />
           <Route path="/favorites" element={<AddFavorite />} />
           <Route path="/destinations/:id" element={<DestinationDetails />} />
+          <Route path="/oauth-success" element={<OAuthSuccess />} />
         </Routes>
       </div>
     </>

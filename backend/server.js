@@ -1,17 +1,23 @@
+// Load environment variables
+require("dotenv").config();
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 
-// Load environment variables
-require("dotenv").config();
 
 // Connect to MongoDB
 connectDB()
 
 // Initialize Express app
 const app = express();
+//Google Auth
+const passport = require("passport");
+require("./config/passport");
+
+
+app.use("/api/auth", require("./routes/authRoutes"));
 
 // Middleware
 // app.use(cors({
@@ -36,6 +42,7 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 }));
 
+app.use(passport.initialize());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

@@ -10,7 +10,7 @@ export default function Navigation() {
   const location = useLocation();
   const navigate = useNavigate();
   const { favoriteIds } = useFavorites();
-
+  const isLoggedIn = !!localStorage.getItem("token");
   const navItems = [
     { path: '/', label: 'Home' },
     { path: '/about', label: 'About' },
@@ -25,7 +25,11 @@ export default function Navigation() {
     navigate('/');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
+  const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        navigate("/login", { replace: true });
+    };
   /* ---------------- THEME LOGIC ---------------- */
 
   
@@ -127,12 +131,21 @@ export default function Navigation() {
             </button>
 
             {/* CTA */}
-            <Link
-              to="/signup"
-              className="hidden md:inline-flex bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition"
-            >
-              Get Started
-            </Link>
+            {!isLoggedIn ? (
+                            <Link
+                                to="/login"
+                                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition"
+                            >
+                                Get Started
+                            </Link>
+                        ) : (
+                            <button
+                                onClick={handleLogout}
+                                className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg font-semibold transition"
+                            >
+                                Logout
+                            </button>
+                        )}
 
             {/* MOBILE MENU */}
             <button
@@ -162,13 +175,25 @@ export default function Navigation() {
               </Link>
             ))}
 
-            <Link
-              to="/signup"
-              onClick={() => setIsOpen(false)}
-              className="block text-center bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition"
-            >
-              Get Started
-            </Link>
+             {!isLoggedIn ? (
+                            <Link
+                                to="/login"
+                                className="block w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-lg font-semibold transition text-center"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                Get Started
+                            </Link>
+                        ) : (
+                            <button
+                                onClick={() => {
+                                    setIsOpen(false);
+                                    handleLogout();
+                                }}
+                                className="block w-full bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg font-semibold transition text-center"
+                            >
+                                Logout
+                            </button>
+                        )}
           </div>
         )}
       </div>

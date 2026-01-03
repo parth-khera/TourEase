@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { User, Mail, Lock, Phone, Eye, EyeOff } from "lucide-react";
 import { api } from "../services/api";
-
+import { API_BASE_URL } from "../config/auth";
 export default function Signup() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -70,7 +70,9 @@ export default function Signup() {
 
     return Object.keys(newErrors).length === 0;
   };
-
+  const handleGoogleSignup = () => {
+    window.location.href = `${API_BASE_URL}/auth/google`;
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -149,7 +151,29 @@ export default function Signup() {
             </p>
           </div>
         )}
+        {/* GOOGLE SIGNUP */}
+        <button
+          onClick={handleGoogleSignup}
+          className="w-full mb-6 flex items-center justify-center gap-3 border border-gray-300 py-3 rounded-lg hover:bg-gray-50 transition"
+        >
+          <img
+            src="https://developers.google.com/identity/images/g-logo.png"
+            alt="Google"
+            className="h-5 w-5"
+          />
+          <span className="font-medium text-gray-700">
+            Continue with Google
+          </span>
+        </button>
 
+        <div className="relative mb-6">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-gray-200"></div>
+          </div>
+          <div className="relative flex justify-center text-sm">
+            <span className="bg-white px-3 text-gray-500">or</span>
+          </div>
+        </div>
         {/* FORM */}
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* NAME */}
