@@ -1,0 +1,32 @@
+/* Mobile Navigation Enhancements */
+
+/* Prevent body scroll when mobile menu is open */
+.mobile-menu-open {
+  overflow: hidden;
+}
+
+/* Ensure proper touch targets for mobile */
+@media (max-width: 767px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve tap highlighting */
+  .mobile-nav-link {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Smooth menu animation */
+  .mobile-menu-container {
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+}
+
+/* Focus styles for accessibility */
+.nav-button:focus-visible,
+.nav-link:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}
